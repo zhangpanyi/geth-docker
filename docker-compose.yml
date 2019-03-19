@@ -1,0 +1,23 @@
+version: "3.0"
+  
+services:
+  geth:
+    image: geth
+    build:
+      context: .
+    logging:
+      driver: json-file
+      options:
+        max-file: "5"
+        max-size: 10m
+    hostname: geth
+    container_name: geth
+    ports:
+      - 8545:8545
+    volumes:
+      - geth-data-volume:/ethereum-data
+    command: --rpc --rpcapi="eth,net,web3" --datadir=/ethereum-data
+
+volumes:
+  geth-data-volume:
+    external: true
