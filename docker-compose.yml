@@ -16,7 +16,7 @@ services:
       - 8545:8545
     volumes:
       - geth-data-volume:/ethereum-data
-    command: --rpc --rpcapi="eth,net,web3" --datadir=/ethereum-data
+    command: --rpc --rpcapi=eth,net,web3 --rpcaddr=0.0.0.0 --datadir=/ethereum-data
 
 volumes:
   geth-data-volume:
